@@ -1,0 +1,42 @@
+.shop-container {
+  padding: 2rem;
+  background-color: #0a0a0a;
+  color: #c1f200; /* neon green */
+  font-family: "Arial", sans-serif;
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.product {
+  background-color: #111;
+  border: 1px solid #c1f200;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.product:hover {
+  transform: scale(1.05);
+  background-color: #1a1a1a;
+}
+
+.product h2 {
+  margin-bottom: 0.5rem;
+  color: #c1f200;
+}
+
+.product p {
+  font-size: 0.9rem;
+  color: #d4ff00;
+}
