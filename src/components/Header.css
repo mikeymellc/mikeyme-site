@@ -1,0 +1,21 @@
+/* src/components/Header.css */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  color: #00ff00;
+  padding: 1rem 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.site-header nav a {
+  color: #00ff00;
+  margin-left: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.site-header nav a:hover {
+  text-decoration: underline;
+}
