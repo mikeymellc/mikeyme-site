@@ -1,45 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Shop.css";
+// src/pages/Shop.js
+import React, { useState } from 'react';
+import ProductCard from '../components/ProductCard';
+
+const initialProducts = [
+  { id: 1, name: 'Flower', strain: '', quantity: 0 },
+  { id: 2, name: 'Rosin', strain: '', quantity: 0 },
+  { id: 3, name: 'Resin', strain: '', quantity: 0 },
+];
 
 const Shop = () => {
+  const [products, setProducts] = useState(initialProducts);
+
+  const handleChange = (e, id) => {
+    const { name, value } = e.target;
+    setProducts(products.map(p => p.id === id ? { ...p, [name]: value } : p));
+  };
+
   return (
-    <div className="shop-page">
-      <h1>Shop Our Products</h1>
-
-      <div className="product-grid">
-        {/* Flower Products */}
-        <Link to="/Indoor" className="product-card">
-          <img src="/images/indoor.jpg" alt="Indoor Flower" />
-          <h2>Indoor Flower</h2>
-        </Link>
-
-        <Link to="/IndoorSmalls" className="product-card">
-          <img src="/images/indoorsmalls.jpg" alt="Indoor Smalls" />
-          <h2>Indoor Smalls</h2>
-        </Link>
-
-        <Link to="/Greenhouse" className="product-card">
-          <img src="/images/greenhouse.jpg" alt="Greenhouse Flower" />
-          <h2>Greenhouse Flower</h2>
-        </Link>
-
-        <Link to="/Outdoors" className="product-card">
-          <img src="/images/outdoors.jpg" alt="Outdoor Flower" />
-          <h2>Outdoor Flower</h2>
-        </Link>
-
-        {/* Concentrate Products */}
-        <Link to="/LiveRosin" className="product-card">
-          <img src="/images/liverosin.jpg" alt="Live Rosin" />
-          <h2>Live Rosin</h2>
-        </Link>
-
-        <Link to="/LiveResin" className="product-card">
-          <img src="/images/liveresin.jpg" alt="Live Resin" />
-          <h2>Live Resin</h2>
-        </Link>
-      </div>
+    <div>
+      <h1>Shop Products</h1>
+      {products.map(p => (
+        <ProductCard key={p.id} product={p} handleChange={handleChange} />
+      ))}
     </div>
   );
 };
