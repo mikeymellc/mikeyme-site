@@ -1,0 +1,72 @@
+import React, { useState, useContext } from "react";
+import "./Product.css";
+import { CartContext } from "../context/CartContext";
+
+export default function IndoorSmalls() {
+  const { addToCart } = useContext(CartContext);
+
+  const [strain, setStrain] = useState("");
+  const [amount, setAmount] = useState("");
+
+  const strains = ["Strain P", "Strain Q", "Strain R"];
+  const amounts = ["1g", "2g", "3.5g"];
+
+  const pricing = {
+    "1g": 30,
+    "2g": 55,
+    "3.5g": 90,
+  };
+
+  const handleAddToCart = () => {
+    if (!strain || !amount) {
+      alert("Please select both a strain and an amount.");
+      return;
+    }
+
+    const product = {
+      name: `Indoor Smalls - ${strain} (${amount})`,
+      price: pricing[amount],
+      strain,
+      amount,
+    };
+
+    addToCart(product);
+    alert(`✅ ${product.name} added to cart!`);
+  };
+
+  return (
+    <div className="product-page">
+      <h1>Indoor Smalls</h1>
+      <p>
+        Organic indoor smalls with minimal environmental impact. Perfect for 
+        those who want premium quality flower in smaller quantities.
+      </p>
+
+      <div className="selectors">
+        <label>
+          Strain:
+          <select value={strain} onChange={(e) => setStrain(e.target.value)}>
+            <option value="">Select Strain</option>
+            {strains.map((s) => (
+              <option key={s} value={s}>{s}</option>
+            ))}
+          </select>
+        </label>
+
+        <label>
+          Amount:
+          <select value={amount} onChange={(e) => setAmount(e.target.value)}>
+            <option value="">Select Amount</option>
+            {amounts.map((a) => (
+              <option key={a} value={a}>{a}</option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+      <button className="add-to-cart" onClick={handleAddToCart}>
+        Add to Cart - ${amount ? pricing[amount] : "0"}
+      </button>
+    </div>
+  );
+}
