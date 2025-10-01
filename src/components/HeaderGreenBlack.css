@@ -1,0 +1,83 @@
+/* Basic header styling */
+.header {
+  background-color: #004d00; /* dark green */
+  color: #fff;
+  padding: 0.5rem 1rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Navigation */
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+.nav li a:hover {
+  background-color: #000;
+  border-radius: 4px;
+}
+
+/* Hamburger menu button */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #004d00;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    z-index: 1000;
+  }
+
+  .nav.open {
+    max-height: 300px; /* enough for all items */
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nav li a {
+    display: block;
+    padding: 1rem;
+    border-bottom: 1px solid #003300;
+  }
+}
