@@ -1,0 +1,71 @@
+import React, { useState, useEffect, useContext } from "react";
+import "./Product.css";
+import { CartContext } from "../context/CartContext";
+
+export default function LiveRosin() {
+  const { addToCart } = useContext(CartContext);
+
+  const [inventory, setInventory] = useState(null);
+  const [strain, setStrain] = useState("");
+  const [amount, setAmount] = useState("");
+
+  useEffect(() => {
+    fetch("/api/inventory")
+      .then((res) => res.json())
+      .then((data) => setInventory(data.LiveRosin || {}))
+      .catch((err) => console.error("Error fetching inventory:", err));
+  }, []);
+
+  const handleAddToCart = () => {
+    if (!strain || !amount) {
+      alert("Please select both a strain and amount.");
+      return;
+    }
+
+    const product = {
+      name: `Live Rosin - ${strain} (${amount})`,
+      price: inventory.pricing[amount],
+      strain,
+      amount,
+    };
+
+    addToCart(product);
+    alert(`✅ ${product.name} added to cart!`);
+  };
+
+  if (!inventory) return <p>Loading inventory...</p>;
+
+  return (
+    <div className="product-page">
+      <h1>Live Rosin</h1>
+      <p>Our Live Rosin is a solventless concentrate made from organic flower.</p>
+
+      <div className="selectors">
+        <label>
+          Strain:
+          <select value={strain} onChange={(e) => setStrain(e.target.value)}>
+            <option value="">Select Strain</option>
+            {inventory.strains.map((s) => (
+              <option key={s} value={s}>{s}</option>
+            ))}
+          </select>
+        </label>
+
+        <label>
+          Amount:
+          <select value={amount} onChange={(e) => setAmount(e.target.value)}>
+            <option value="">Select Amount</option>
+            {inventory.amounts.map((a) => (
+              <option key={a} value={a}>{a}</option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+      <button className="add-to-cart" onClick={handleAddToCart}>
+        Add to Cart - ${amount ? inventory.pricing[amount] : "0"}
+      </button>
+    </div>
+  );
+  }
+            
