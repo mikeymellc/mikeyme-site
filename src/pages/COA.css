@@ -1,0 +1,26 @@
+.coa-page {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.coa-list {
+  list-style: none;
+  padding: 0;
+}
+
+.coa-list li {
+  margin: 12px 0;
+}
+
+.coa-list a {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #1976d2;
+}
+
+.coa-list a:hover {
+  text-decoration: underline;
+}
