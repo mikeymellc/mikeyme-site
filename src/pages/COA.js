@@ -1,17 +1,29 @@
 import React from "react";
-import "./COA.css";
 
 export default function COA() {
   return (
-    <div className="coa-page">
-      <h1>Certificate of Analysis (COA)</h1>
-      <p>Select a strain below to view or download its lab results.</p>
+    <div className="product-page">
+      <h1>Certificates of Analysis</h1>
+      <p>Select a strain below to view the COA PDF.</p>
 
-      <ul className="coa-list">
-        <li><a href="/coa/sour-gas.pdf" target="_blank">Sour Gas</a></li>
-        <li><a href="/coa/blueberry-muffin.pdf" target="_blank">Blueberry Muffin</a></li>
-        <li><a href="/coa/cookies-2025.pdf" target="_blank">Cookies</a></li>
-        <li><a href="/coa/gassy-apple.pdf" target="_blank">Gassy Apple</a></li>
+      <ul style={{ lineHeight: "2rem" }}>
+        <li>
+          <a href="/coa/strain1.pdf" target="_blank" rel="noopener noreferrer">
+            Strain 1 COA
+          </a>
+        </li>
+
+        <li>
+          <a href="/coa/strain2.pdf" target="_blank" rel="noopener noreferrer">
+            Strain 2 COA
+          </a>
+        </li>
+
+        <li>
+          <a href="/coa/strain3.pdf" target="_blank" rel="noopener noreferrer">
+            Strain 3 COA
+          </a>
+        </li>
       </ul>
     </div>
   );
