@@ -1,5 +1,5 @@
 import React from "react";
-import "src/pages/COA.css";
+import "./COA.css";
 
 export default function COA() {
   return (
