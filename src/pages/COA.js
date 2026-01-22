@@ -8,8 +8,8 @@ export default function COA() {
 
       <ul style={{ lineHeight: "2rem" }}>
         <li>
-          <a href="/coa/strain1.pdf" target="_blank" rel="noopener noreferrer">
-            Strain 1 COA
+          <a href="/coa/White Runts COA.pdf" target="_blank" rel="noopener noreferrer">
+            White Runts COA
           </a>
         </li>
 
